@@ -59,7 +59,6 @@ router.post(
   validate(
     Joi.object({
       emailCode: Joi.number().min(100000).max(999999).required(),
-      pushMessageToken: Joi.string(),
     })
   ),
   userController.loginUser

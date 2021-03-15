@@ -8,7 +8,7 @@
     "startjs": "node ./build/server.js",
     "dev": "nodemon ./src/server.ts",
     "build": "tsc -p .",
-    "test": "jest ./src/test/end_to_end/user_route.test.ts"
+    "test": "jest ./src/test/"
   },
   "keywords": [],
   "author": "",

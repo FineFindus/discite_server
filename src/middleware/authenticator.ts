@@ -22,7 +22,7 @@ const authenticateAccessToken = (
     }
     const tokenData = jwt.verify(token, secret);
 
-    console.log(tokenData);
+    // console.log(tokenData);
     // req.body.tokenData = tokenData;
     next();
   } catch (error) {
@@ -51,7 +51,7 @@ const authenticateRefreshToken = (
     }
     const tokenData = jwt.verify(token, secret);
 
-    console.log(tokenData);
+    // console.log(tokenData);
     // req.body.tokenData = tokenData;
     next();
   } catch (error) {

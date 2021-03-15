@@ -10,6 +10,7 @@ const main = async () => {
     console.log('Connecting to database...');
     await mongoose.connect(config.mongoUri, config.mongooseOptions);
     console.log('Connect to database: ✅');
+    // await mongoose.connection.dropDatabase();
   } catch (error) {
     console.log('Failed to connect to database: ❌');
     console.log('connection error:' + error);

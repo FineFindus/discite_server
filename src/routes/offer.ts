@@ -2,7 +2,6 @@ import express from 'express';
 import Joi from 'joi';
 import validate from '../middleware/validator';
 import offerController from '../controller/offer_controller';
-import { join } from 'path';
 
 const router = express.Router();
 

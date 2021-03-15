@@ -16,6 +16,9 @@ dotenv.config();
 
 const app = express();
 
+//disable powered by header
+app.disable('x-powered-by');
+
 /**Add middleware to all routes */
 //cors for cors
 app.use(cors);
@@ -28,11 +31,11 @@ app.use(
     // 'IP[:remote-addr] - :method :url :status :response-time ms - :res[content-length]'
   )
 );
-//fav icon for nice looks, although nobody ever sees this (except for me ヾ(≧▽≦*)oヾ)
+//fav icon for nice looks, although nobody will ever see this （￣︶￣）↗
 app.use(favIcon('favicon.ico'));
 //use body-parser for json format
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
  * ROUTES

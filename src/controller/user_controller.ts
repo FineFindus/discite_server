@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
 import { isValidObjectId } from 'mongoose';
 import HttpError from '../error/http_error';
 import {
@@ -111,6 +110,16 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
       //if the user is not found/already deleted respond with 404;
       const error = new HttpError(404, `User with id ${id} not found`);
       return next(error);
+    }
+
+    //TODO remove in production, this is only for development
+    if (req.body.emailCode == '100000') {
+      const accessToken = generateAccessToken({ user: user._id });
+      const refreshToken = generateRefreshToken({ user: user._id });
+      return res.json({
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      });
     }
     //check if the emailCode from the body match the code in the user document
     //and if the code isn't older then 10 minutes
