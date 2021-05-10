@@ -1,17 +1,12 @@
-import mongoose, { Connection } from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import app from './app';
 import config from './helper/config';
-
-//load dotenv variables
-dotenv.config();
 
 /**
  * Main function
  */
 const main = async () => {
   try {
-    console.log('ConnectionString: ' + config.mongoUri);
     console.log('Connecting to database...');
     await mongoose.connect(config.mongoUri, config.mongooseOptions);
     console.log('Connect to database: ✅');

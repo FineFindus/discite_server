@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { isValidObjectId } from 'mongoose';
 import HttpError from '../error/http_error';
-import config from '../helper/config';
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -23,19 +22,9 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const usersWithEmail: IUser[] = await User.find({ email: req.body.email });
-    if (usersWithEmail.length > 0) {
-      //send error
-      const httpError = new HttpError(
-        409,
-        `User with mail ${req.body.email} already exist. You can try to signup at https://${config.host}${config.port}/user/signup}`
-      );
-      //forward error to error handler
-      return next(httpError);
-    }
     //get user from body
     const user: any = new User({
-      email: req.body.email.toLowercase(),
+      email: req.body.email,
       pushMessageToken: req.body.pushMessageToken,
     });
     await user.save();

@@ -1,4 +1,5 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import favIcon from 'serve-favicon';
@@ -10,6 +11,8 @@ import userRoutes from './routes/user';
 import offerRoutes from './routes/offer';
 //import own middleware
 import { authenticateAccessToken } from './middleware/authenticator';
+//load dotenv variables
+dotenv.config();
 
 const app = express();
 
