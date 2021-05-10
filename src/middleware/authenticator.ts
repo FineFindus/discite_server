@@ -26,6 +26,7 @@ const authenticateAccessToken = (
     // req.body.tokenData = tokenData;
     next();
   } catch (error) {
+    console.log(error);
     const responseError = new HttpError(401, `Authorization failed`);
     return next(responseError);
   }
